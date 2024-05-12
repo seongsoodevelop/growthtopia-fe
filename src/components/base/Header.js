@@ -1,0 +1,86 @@
+import { Button } from "#components/common";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authSelector } from "#redux/modules/auth";
+
+const HeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--primary);
+  color: white;
+`;
+
+const HeaderContent = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  height: 4rem;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  font-weight: 800;
+
+  user-select: none;
+`;
+
+const HeaderMargin = styled.div`
+  margin-bottom: 4rem;
+`;
+
+const Logo = styled.div`
+  font-size: 1.25rem;
+`;
+
+const Control = styled.div``;
+
+export default function Header() {
+  const navigate = useNavigate();
+
+  const auth = useSelector(authSelector);
+
+  return (
+    <>
+      <HeaderContainer>
+        <HeaderContent>
+          <Logo>GrowthTopia</Logo>
+          <div style={{ flexGrow: 1 }} />
+          <Control>
+            {auth.isGreeted && (
+              <>
+                {auth.isLogged ? (
+                  <Button
+                    theme="none white"
+                    onClick={() => {
+                      navigate("/user/profile");
+                    }}
+                  >
+                    {auth.loggedData.nickname}
+                  </Button>
+                ) : (
+                  <Button
+                    theme="none white"
+                    onClick={() => {
+                      navigate("/auth/login");
+                    }}
+                  >
+                    로그인
+                  </Button>
+                )}
+              </>
+            )}
+          </Control>
+        </HeaderContent>
+      </HeaderContainer>
+      <HeaderMargin />
+    </>
+  );
+}
