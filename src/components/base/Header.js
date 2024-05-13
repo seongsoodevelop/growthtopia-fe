@@ -1,8 +1,12 @@
-import { Button } from "#components/common";
 import styled from "styled-components";
+import { Button } from "#components/common";
+import HeaderUserMenu from "./HeaderUserMenu";
+
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { authSelector } from "#redux/modules/auth";
+import { controlSelector, updateControlBase } from "#redux/modules/control";
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -40,12 +44,17 @@ const Logo = styled.div`
   font-size: 1.25rem;
 `;
 
-const Control = styled.div``;
+const Control = styled.div`
+  position: relative;
+  height: 100%;
+`;
 
 export default function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const auth = useSelector(authSelector);
+  const control = useSelector(controlSelector);
 
   return (
     <>
@@ -57,14 +66,21 @@ export default function Header() {
             {auth.isGreeted && (
               <>
                 {auth.isLogged ? (
-                  <Button
-                    theme="none white"
-                    onClick={() => {
-                      navigate("/user/profile");
-                    }}
-                  >
-                    {auth.loggedData.nickname}
-                  </Button>
+                  <>
+                    <Button
+                      theme="none white"
+                      onClick={() => {
+                        dispatch(
+                          updateControlBase({
+                            userMenuOpen: !control.base.userMenuOpen,
+                          })
+                        );
+                      }}
+                    >
+                      {auth.loggedData.nickname}
+                    </Button>
+                    <HeaderUserMenu userMenuOpen={control.base.userMenuOpen} />
+                  </>
                 ) : (
                   <Button
                     theme="none white"

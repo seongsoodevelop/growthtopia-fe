@@ -1,13 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { AuthContainer, KaKaoButton, KakaoButton } from "#components/auth";
-import { Button, Typo } from "#components/common";
+import { AuthContainer, KakaoButton } from "#components/auth";
+import { Typo } from "#components/common";
 
 export default function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   return (
     <AuthContainer>
       <Typo as="h2" style={{ marginBottom: "1.5rem", fontWeight: "600" }}>

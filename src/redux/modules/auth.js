@@ -5,14 +5,18 @@ import * as AuthAPI from "#lib/api/auth";
 
 const name = "auth";
 
+export const authSessionHi = createAPICallAction(
+  `${name}/authSessionHi`,
+  AuthAPI.sessionHi
+);
+export const authSessionBye = createAPICallAction(
+  `${name}/authSessionBye`,
+  AuthAPI.sessionBye
+);
+
 export const authSocialKakao = createAPICallAction(
   `${name}/authSocialKakao`,
   AuthAPI.socialKakao
-);
-
-export const authGreeting = createAPICallAction(
-  `${name}/authGreeting`,
-  AuthAPI.greeting
 );
 
 export const authInitialState = {
@@ -32,22 +36,7 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     addAPICallActionCase(
       builder,
-      authSocialKakao,
-      {
-        fulfilled: (state, action) => {
-          console.log("fulfilled");
-          window.location.href = "/";
-        },
-        rejected: (state, action) => {
-          console.log("rejected");
-        },
-      },
-      {}
-    );
-
-    addAPICallActionCase(
-      builder,
-      authGreeting,
+      authSessionHi,
       {
         fulfilled: (state, action) => {
           state.isGreeted = true;
@@ -57,6 +46,31 @@ export const slice = createSlice({
         rejected: (state, action) => {
           state.isGreeted = true;
         },
+      },
+      {}
+    );
+    addAPICallActionCase(
+      builder,
+      authSessionBye,
+      {
+        fulfilled: (state, action) => {
+          window.location.href = "/";
+        },
+        rejected: (state, action) => {
+          window.location.href = "/";
+        },
+      },
+      {}
+    );
+
+    addAPICallActionCase(
+      builder,
+      authSocialKakao,
+      {
+        fulfilled: (state, action) => {
+          window.location.href = "/";
+        },
+        rejected: (state, action) => {},
       },
       {}
     );

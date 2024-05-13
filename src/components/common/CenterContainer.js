@@ -7,14 +7,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  text-align: center;
 `;
 
-const Content = styled.div``;
-
-export default function CenterContainer({ children }) {
-  return (
-    <Container>
-      <Content>{children}</Content>
-    </Container>
-  );
+export default function CenterContainer({ children, ...rest }) {
+  return <Container {...rest}>{children}</Container>;
 }

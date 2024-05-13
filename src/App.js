@@ -2,24 +2,25 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { authGreeting } from "#redux/modules/auth";
+import { authSessionHi } from "#redux/modules/auth";
 
-import { Auth, Home, NotFound } from "#pages";
+import { Auth, Meta, Home, NotFound } from "#pages";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authGreeting({}));
+    dispatch(authSessionHi({}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div class="App">
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/auth/*" element={<Auth />} />
+          <Route path="/meta/*" element={<Meta />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
