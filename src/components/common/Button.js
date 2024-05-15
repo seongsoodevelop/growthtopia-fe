@@ -9,16 +9,30 @@ const ButtonContainer = styled.button`
   background: white;
   ${({ theme }) => {
     switch (theme) {
-      case "none white": {
+      case "none": {
         return `
           background: none;
           color: white;
           border: none;
         `;
       }
-      case "primary white": {
+      case "gray": {
+        return `
+          background: var(--gray1);
+          color: var(--gray7);
+          border: none;
+        `;
+      }
+      case "primary": {
         return `
           background: var(--primary);
+          color: white;
+          border: none;
+        `;
+      }
+      case "red": {
+        return `
+          background: var(--systemRed);
           color: white;
           border: none;
         `;

@@ -17,10 +17,10 @@ const ContainerContent = styled.div`
   padding: 0 1rem;
 `;
 
-export default function Container({ children }) {
+export default function Container({ children, ...rest }) {
   return (
     <ContainerContainer>
-      <ContainerContent>{children}</ContainerContent>
+      <ContainerContent {...rest}>{children}</ContainerContent>
     </ContainerContainer>
   );
 }

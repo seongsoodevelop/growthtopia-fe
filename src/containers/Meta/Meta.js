@@ -44,21 +44,14 @@ export default function Meta() {
   }, [addEventListener, removeEventListener, sendMessage]);
 
   if (!user.meta.ticketToken) {
-    return (
-      <CenterContainer>
-        잠시만 기다려주세요...
-        <br />
-        입장 권한 획득 중
-      </CenterContainer>
-    );
+    return <CenterContainer>입장 권한을 획득하는 중입니다</CenterContainer>;
   }
 
   return (
     <>
       {!isLoaded && (
         <CenterContainer style={{ overflow: "hidden" }}>
-          잠시만 기다려주세요...
-          <br /> 플레이어 로딩 중
+          플레이어를 불러오는 중입니다
         </CenterContainer>
       )}
       <Unity

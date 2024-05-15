@@ -70,7 +70,10 @@ export const slice = createSlice({
         fulfilled: (state, action) => {
           window.location.href = "/";
         },
-        rejected: (state, action) => {},
+        rejected: (state, action) => {
+          alert("실패");
+          window.location.href = "/";
+        },
       },
       {}
     );

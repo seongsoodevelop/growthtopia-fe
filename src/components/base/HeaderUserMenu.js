@@ -33,6 +33,7 @@ const MenuContent = styled.div`
   align-items: center;
   flex-direction: column;
 
+  background: white;
   color: black;
 
   border: solid 0.1rem var(--gray3);

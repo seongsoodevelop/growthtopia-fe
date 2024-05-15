@@ -68,7 +68,7 @@ export default function Header() {
                 {auth.isLogged ? (
                   <>
                     <Button
-                      theme="none white"
+                      theme="none"
                       onClick={() => {
                         dispatch(
                           updateControlBase({
@@ -83,7 +83,7 @@ export default function Header() {
                   </>
                 ) : (
                   <Button
-                    theme="none white"
+                    theme="none"
                     onClick={() => {
                       navigate("/auth/login");
                     }}
