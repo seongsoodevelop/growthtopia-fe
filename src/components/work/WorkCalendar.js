@@ -1,6 +1,5 @@
 import { Button, Typo } from "#components/common";
 import {
-  checkDateTimeIsInTargetDate,
   checkDateTimeIsInTargetDateDivision,
   formatWeeksOfMonth,
 } from "#lib/momentTools";
@@ -11,7 +10,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import WorkTaskSummary from "./WorkTaskSummary";
-import { userSelector } from "#redux/modules/user";
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -75,7 +73,7 @@ const DayHeader = styled.div`
   cursor: pointer;
 `;
 
-export default function WorkCalendar({}) {
+export default function WorkCalendar() {
   const control = useSelector(controlSelector);
   const { isCalendarWeek, targetDate, calendarTargetDate } = control.work;
 
