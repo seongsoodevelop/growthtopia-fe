@@ -39,6 +39,7 @@ export default function Meta() {
         "GetTicketTokenFromReact",
         handleGetTicketTokenFromReact
       );
+      sendMessage("@ReactCommunicator", "OnQuit");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addEventListener, removeEventListener, sendMessage]);

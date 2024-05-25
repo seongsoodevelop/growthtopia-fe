@@ -11,8 +11,9 @@ import axios from "axios";
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000/"
-    : "https://api.growthtopia.net/";
+    ? process.env.REACT_APP_API_DEVELOPMENT
+    : process.env.REACT_APP_API_PRODUCTION;
+
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = true;
 

@@ -13,7 +13,7 @@ export default function Login() {
             process.env.REACT_APP_KAKAO_REST_KEY
           }&redirect_uri=${
             process.env.NODE_ENV === "development"
-              ? process.env.REACT_APP_KAKAO_REDIRECT_DEBUG
+              ? process.env.REACT_APP_KAKAO_REDIRECT_DEVELOPMENT
               : process.env.REACT_APP_KAKAO_REDIRECT_PRODUCTION
           }&response_type=code`;
         }}
