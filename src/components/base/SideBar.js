@@ -10,10 +10,11 @@ import {
   MdOutlineBarChart,
   MdRocketLaunch,
   MdAccountBalance,
-  MdBolt,
   MdWork,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { allowScroll, preventScroll } from "#lib/scrollTools";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -43,6 +44,7 @@ const Container = styled.div`
   position: fixed;
   z-index: 100;
 
+  top: 0;
   left: -100%;
 
   width: min(100vw, 20rem);
@@ -149,6 +151,18 @@ const MenuItem = styled.div`
 
 export default function SideBar({ isOpen, closeCallback }) {
   const navigate = useNavigate();
+
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  useEffect(() => {
+    if (isOpen) {
+      const _prevScrollY = preventScroll();
+      setPrevScrollY(_prevScrollY);
+    } else {
+      allowScroll(prevScrollY);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <>
