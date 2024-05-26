@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authSelector } from "#redux/modules/auth";
 import { controlSelector, updateControlBase } from "#redux/modules/control";
+import { SideBar } from "./";
+import { useState } from "react";
+
+import { LiaBarsSolid } from "react-icons/lia";
+import { MdMenu } from "react-icons/md";
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -20,10 +25,12 @@ const HeaderContainer = styled.div`
 
   background: var(--primary);
   color: white;
+
+  z-index: 10;
 `;
 
 const HeaderContent = styled.div`
-  max-width: 1200px;
+  // max-width: 1200px;
   width: 100%;
   height: 4rem;
   padding: 1rem;
@@ -42,6 +49,17 @@ const HeaderMargin = styled.div`
 
 const Logo = styled.div`
   font-size: 1.25rem;
+
+  display: flex;
+  align-items: center;
+`;
+
+const BarIcon = styled(MdMenu)`
+  margin-right: 0.5rem;
+
+  cursor: pointer;
+
+  font-size: 1.5rem;
 `;
 
 const Control = styled.div`
@@ -56,11 +74,20 @@ export default function Header() {
   const auth = useSelector(authSelector);
   const control = useSelector(controlSelector);
 
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
   return (
     <>
       <HeaderContainer>
         <HeaderContent>
-          <Logo>GrowthTopia</Logo>
+          <Logo>
+            <BarIcon
+              onClick={() => {
+                setIsSideBarOpen(!isSideBarOpen);
+              }}
+            />
+            GrowthTopia
+          </Logo>
           <div style={{ flexGrow: 1 }} />
           <Control>
             {auth.isGreeted && (
@@ -96,6 +123,12 @@ export default function Header() {
           </Control>
         </HeaderContent>
       </HeaderContainer>
+      <SideBar
+        isOpen={isSideBarOpen}
+        closeCallback={() => {
+          setIsSideBarOpen(false);
+        }}
+      />
       <HeaderMargin />
     </>
   );
