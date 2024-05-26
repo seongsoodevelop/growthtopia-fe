@@ -1,16 +1,13 @@
 import { shadowCSS } from "#lib/styleTools";
-import { useState } from "react";
 import styled from "styled-components";
 
 import {
   MdAssignment,
   MdCheck,
-  MdCheckBox,
   MdClose,
   MdOutlineBarChart,
 } from "react-icons/md";
-import { FaRegStickyNote } from "react-icons/fa";
-import { MdShowChart } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -42,7 +39,7 @@ const Container = styled.div`
 
   left: -100%;
 
-  width: min(100vw, 22rem);
+  width: min(100vw, 20rem);
   height: 100vh;
 
   display: flex;
@@ -123,6 +120,7 @@ const MenuItem = styled.div`
   width: calc(100% - 2rem);
   padding: 0.5rem 1rem;
 
+  font-size: 1rem;
   font-weight: 600;
   color: var(--gray3);
 
@@ -133,6 +131,8 @@ const MenuItem = styled.div`
 `;
 
 export default function SideBar({ isOpen, closeCallback }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <ModalBackground
@@ -176,7 +176,11 @@ export default function SideBar({ isOpen, closeCallback }) {
           </div>
         </Header>
         <MenuHeader>워크스페이스</MenuHeader>
-        <MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/workspace/plan");
+          }}
+        >
           <MdAssignment style={{ marginRight: "0.5rem" }} />
           계획하기
         </MenuItem>

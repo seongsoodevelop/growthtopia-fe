@@ -10,7 +10,6 @@ import { controlSelector, updateControlBase } from "#redux/modules/control";
 import { SideBar } from "./";
 import { useState } from "react";
 
-import { LiaBarsSolid } from "react-icons/lia";
 import { MdMenu } from "react-icons/md";
 
 const HeaderContainer = styled.div`

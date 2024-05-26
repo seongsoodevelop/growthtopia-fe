@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { authSessionHi } from "#redux/modules/auth";
 
 import { Auth, Meta, Home, NotFound } from "#pages";
+import Workspace from "#pages/Plan";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/auth/*" element={<Auth />} />
           <Route path="/meta/*" element={<Meta />} />
+          <Route path="/workspace/*" element={<Workspace />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
