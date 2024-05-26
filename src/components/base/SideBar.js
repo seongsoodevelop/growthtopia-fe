@@ -14,7 +14,8 @@ import {
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { allowScroll, preventScroll } from "#lib/scrollTools";
+// import { allowScroll, preventScroll } from "#lib/scrollTools";
+import useScrollBlock from "hooks/useScrollBlock";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -153,12 +154,15 @@ export default function SideBar({ isOpen, closeCallback }) {
   const navigate = useNavigate();
 
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const [blockScroll, allowScroll] = useScrollBlock();
   useEffect(() => {
     if (isOpen) {
-      const _prevScrollY = preventScroll();
-      setPrevScrollY(_prevScrollY);
+      blockScroll();
+      // const _prevScrollY = preventScroll();
+      // setPrevScrollY(_prevScrollY);
     } else {
-      allowScroll(prevScrollY);
+      allowScroll();
+      // allowScroll(prevScrollY);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
