@@ -5,7 +5,13 @@ import {
   MdAssignment,
   MdCheck,
   MdClose,
+  MdFlag,
+  MdHome,
   MdOutlineBarChart,
+  MdRocketLaunch,
+  MdAccountBalance,
+  MdBolt,
+  MdWork,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -59,6 +65,11 @@ const Container = styled.div`
     left: 0;
     ${shadowCSS}
   }
+
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Top = styled.div`
@@ -104,15 +115,21 @@ const Header = styled.div`
   line-height: 1.6;
 
   background: var(--primaryD1);
+  border-bottom: solid 0.1rem var(--primaryL1);
+
+  margin-bottom: 0.5rem;
+`;
+
+const MenuSpacer = styled.div`
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  border-bottom: solid 0.1rem var(--primaryL1);
 `;
 
 const MenuHeader = styled.div`
   width: 100%;
   padding: 0.5rem 1rem;
-  padding-top: 2rem;
-
-  border-top: solid 0.1rem var(--primaryL1);
-
   color: var(--gray5);
 `;
 
@@ -175,20 +192,52 @@ export default function SideBar({ isOpen, closeCallback }) {
             GrowthTopia 드림
           </div>
         </Header>
+        <MenuHeader>일반</MenuHeader>
+        <MenuItem
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <MdHome style={{ marginRight: "0.5rem" }} />홈
+        </MenuItem>
+        <MenuSpacer />
         <MenuHeader>워크스페이스</MenuHeader>
         <MenuItem
           onClick={() => {
             navigate("/workspace/plan");
           }}
         >
+          <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate("/workspace/plan");
+          }}
+        >
           <MdAssignment style={{ marginRight: "0.5rem" }} />
-          계획하기
+          계획과 스케줄
         </MenuItem>
         <MenuItem>
-          <MdCheck style={{ marginRight: "0.5rem" }} /> 실천하기
+          <MdCheck style={{ marginRight: "0.5rem" }} />
+          인박스에서 실천하기
         </MenuItem>
         <MenuItem>
-          <MdOutlineBarChart style={{ marginRight: "0.5rem" }} /> 분석하기
+          <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
+          나는 노력하고 있을까
+        </MenuItem>
+        <MenuItem>
+          <MdWork style={{ marginRight: "0.5rem" }} />
+          워크스페이스
+        </MenuItem>
+        <MenuSpacer />
+        <MenuHeader>그로스토피아</MenuHeader>
+        <MenuItem>
+          <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
+          메타버스
+        </MenuItem>
+        <MenuItem>
+          <MdAccountBalance style={{ marginRight: "0.5rem" }} />
+          은행
         </MenuItem>
       </Container>
     </>

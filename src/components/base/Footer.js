@@ -14,7 +14,7 @@ const FooterContainer = styled.footer`
 `;
 
 const FooterContent = styled.div`
-  max-width: 1200px;
+  // max-width: 1200px;
   width: 100%;
   padding: 1rem;
 

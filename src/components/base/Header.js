@@ -85,7 +85,14 @@ export default function Header() {
                 setIsSideBarOpen(!isSideBarOpen);
               }}
             />
-            GrowthTopia
+            <div
+              onClick={() => {
+                navigate("/");
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              GrowthTopia
+            </div>
           </Logo>
           <div style={{ flexGrow: 1 }} />
           <Control>
