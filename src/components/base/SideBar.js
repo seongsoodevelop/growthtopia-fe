@@ -64,6 +64,16 @@ const Container = styled.div`
     left: 0;
     ${shadowCSS}
   }
+`;
+
+const Content = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex-grow: 1;
 
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -185,54 +195,56 @@ export default function SideBar({ isOpen, closeCallback }) {
             </CloseBtn>
           </Top>
 
-          <MenuHeader>일반</MenuHeader>
-          <MenuItem
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <MdHome style={{ marginRight: "0.5rem" }} />홈
-          </MenuItem>
-          <MenuSpacer />
-          <MenuHeader>워크스페이스</MenuHeader>
-          <MenuItem>
-            <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              navigate("/workspace/plan");
-            }}
-          >
-            <MdAssignment style={{ marginRight: "0.5rem" }} />
-            계획과 스케줄
-          </MenuItem>
-          <MenuItem>
-            <MdCheck style={{ marginRight: "0.5rem" }} />
-            인박스와 실행
-          </MenuItem>
-          <MenuItem>
-            <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
-            분석과 통계
-          </MenuItem>
-          <MenuItem>
-            <MdWork style={{ marginRight: "0.5rem" }} />
-            워크스페이스
-          </MenuItem>
-          <MenuSpacer />
-          <MenuHeader>그로스토피아</MenuHeader>
-          <MenuItem
-            onClick={() => {
-              navigate("/meta/play");
-            }}
-          >
-            <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
-            메타버스
-          </MenuItem>
-          <MenuItem>
-            <MdAccountBalance style={{ marginRight: "0.5rem" }} />
-            은행
-          </MenuItem>
-          <div style={{ flexGrow: 1, minHeight: "5rem" }} />
+          <Content>
+            <MenuHeader>일반</MenuHeader>
+            <MenuItem
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <MdHome style={{ marginRight: "0.5rem" }} />홈
+            </MenuItem>
+            <MenuSpacer />
+            <MenuHeader>워크스페이스</MenuHeader>
+            <MenuItem>
+              <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                navigate("/workspace/plan");
+              }}
+            >
+              <MdAssignment style={{ marginRight: "0.5rem" }} />
+              계획과 스케줄
+            </MenuItem>
+            <MenuItem>
+              <MdCheck style={{ marginRight: "0.5rem" }} />
+              인박스와 실행
+            </MenuItem>
+            <MenuItem>
+              <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
+              분석과 통계
+            </MenuItem>
+            <MenuItem>
+              <MdWork style={{ marginRight: "0.5rem" }} />
+              워크스페이스
+            </MenuItem>
+            <MenuSpacer />
+            <MenuHeader>그로스토피아</MenuHeader>
+            <MenuItem
+              onClick={() => {
+                navigate("/meta/play");
+              }}
+            >
+              <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
+              메타버스
+            </MenuItem>
+            <MenuItem>
+              <MdAccountBalance style={{ marginRight: "0.5rem" }} />
+              은행
+            </MenuItem>
+          </Content>
+          <div style={{ flexGrow: 1, minHeight: "2rem" }} />
           <Message>
             <strong>체계적으로 계획</strong>하고
             <br />
