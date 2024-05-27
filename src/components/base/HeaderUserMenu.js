@@ -69,7 +69,7 @@ export default function HeaderUserMenu({ userMenuOpen }) {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            navigate("/meta");
+            navigate("/meta/play");
           }}
         >
           메타버스

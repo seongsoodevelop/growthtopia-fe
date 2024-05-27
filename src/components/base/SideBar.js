@@ -60,8 +60,6 @@ const Container = styled.div`
 
   user-select: none;
 
-  border-right: solid 0.1rem var(--primaryL1);
-
   &.open {
     left: 0;
     ${shadowCSS}
@@ -77,6 +75,8 @@ const Top = styled.div`
   width: 100%;
   min-height: 4rem;
 
+  padding-left: 1rem;
+
   text-align: left;
 
   color: white;
@@ -84,9 +84,10 @@ const Top = styled.div`
   display: flex;
   align-items: center;
 
-  padding-left: 1rem;
+  background: var(--primaryD1);
 
   border-bottom: solid 0.1rem var(--primaryL1);
+  margin-bottom: 0.5rem;
 `;
 
 const CloseBtn = styled.div`
@@ -97,7 +98,7 @@ const CloseBtn = styled.div`
   align-items: center;
 `;
 
-const Header = styled.div`
+const Message = styled.div`
   width: 100%;
   padding: 2rem;
 
@@ -116,16 +117,16 @@ const Header = styled.div`
   line-height: 1.6;
 
   background: var(--primaryD1);
-  border-bottom: solid 0.1rem var(--primaryL1);
+  border-top: solid 0.1rem var(--primaryL1);
 
-  margin-bottom: 0.5rem;
+  // margin-bottom: 0.5rem;
 `;
 
 const MenuSpacer = styled.div`
   width: 100%;
   margin-bottom: 0.5rem;
   padding-top: 0.5rem;
-  border-bottom: solid 0.1rem var(--primaryL1);
+  // border-bottom: solid 0.1rem var(--primaryL1);
 `;
 
 const MenuHeader = styled.div`
@@ -135,8 +136,9 @@ const MenuHeader = styled.div`
 `;
 
 const MenuItem = styled.div`
-  width: calc(100% - 2rem);
+  width: 100%;
   padding: 0.5rem 1rem;
+  padding-left: 2rem;
 
   font-size: 1rem;
   font-weight: 600;
@@ -146,6 +148,13 @@ const MenuItem = styled.div`
 
   display: flex;
   align-items: center;
+
+  &:hover {
+    background: var(--primaryL1);
+  }
+
+  // border-radius: 0.4rem;
+  transition: background 0.2s ease;
 `;
 
 export default function SideBar({ isOpen, closeCallback }) {
@@ -177,7 +186,56 @@ export default function SideBar({ isOpen, closeCallback }) {
               </div>
             </CloseBtn>
           </Top>
-          <Header>
+
+          <MenuHeader>일반</MenuHeader>
+          <MenuItem
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <MdHome style={{ marginRight: "0.5rem" }} />홈
+          </MenuItem>
+          <MenuSpacer />
+          <MenuHeader>워크스페이스</MenuHeader>
+          <MenuItem>
+            <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              navigate("/workspace/plan");
+            }}
+          >
+            <MdAssignment style={{ marginRight: "0.5rem" }} />
+            계획과 스케줄
+          </MenuItem>
+          <MenuItem>
+            <MdCheck style={{ marginRight: "0.5rem" }} />
+            인박스와 실행
+          </MenuItem>
+          <MenuItem>
+            <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
+            분석과 통계
+          </MenuItem>
+          <MenuItem>
+            <MdWork style={{ marginRight: "0.5rem" }} />
+            워크스페이스
+          </MenuItem>
+          <MenuSpacer />
+          <MenuHeader>그로스토피아</MenuHeader>
+          <MenuItem
+            onClick={() => {
+              navigate("/meta/play");
+            }}
+          >
+            <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
+            메타버스
+          </MenuItem>
+          <MenuItem>
+            <MdAccountBalance style={{ marginRight: "0.5rem" }} />
+            은행
+          </MenuItem>
+          <div style={{ flexGrow: 1 }} />
+          <Message>
             <strong>체계적으로 계획</strong>하고
             <br />
             <strong>집중해서 실천</strong>하고
@@ -195,54 +253,7 @@ export default function SideBar({ isOpen, closeCallback }) {
             >
               GrowthTopia 드림
             </div>
-          </Header>
-          <MenuHeader>일반</MenuHeader>
-          <MenuItem
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <MdHome style={{ marginRight: "0.5rem" }} />홈
-          </MenuItem>
-          <MenuSpacer />
-          <MenuHeader>워크스페이스</MenuHeader>
-          <MenuItem
-            onClick={() => {
-              navigate("/workspace/plan");
-            }}
-          >
-            <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              navigate("/workspace/plan");
-            }}
-          >
-            <MdAssignment style={{ marginRight: "0.5rem" }} />
-            계획과 스케줄
-          </MenuItem>
-          <MenuItem>
-            <MdCheck style={{ marginRight: "0.5rem" }} />
-            인박스에서 실천하기
-          </MenuItem>
-          <MenuItem>
-            <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
-            나는 노력하고 있을까
-          </MenuItem>
-          <MenuItem>
-            <MdWork style={{ marginRight: "0.5rem" }} />
-            워크스페이스
-          </MenuItem>
-          <MenuSpacer />
-          <MenuHeader>그로스토피아</MenuHeader>
-          <MenuItem>
-            <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
-            메타버스
-          </MenuItem>
-          <MenuItem>
-            <MdAccountBalance style={{ marginRight: "0.5rem" }} />
-            은행
-          </MenuItem>
+          </Message>
         </Container>
       </RemoveScroll>
     </>

@@ -4,7 +4,7 @@ import { CenterContainer } from "#components/common";
 import { useDispatch, useSelector } from "react-redux";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
-export default function Meta() {
+export default function Play() {
   const dispatch = useDispatch();
 
   const user = useSelector(userSelector);
