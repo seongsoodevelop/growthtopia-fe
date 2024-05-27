@@ -13,9 +13,7 @@ import {
   MdWork,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-// import { allowScroll, preventScroll } from "#lib/scrollTools";
-import useScrollBlock from "hooks/useScrollBlock";
+import { RemoveScroll } from "react-remove-scroll";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -77,7 +75,7 @@ const Container = styled.div`
 
 const Top = styled.div`
   width: 100%;
-  height: 4rem;
+  min-height: 4rem;
 
   text-align: left;
 
@@ -153,21 +151,6 @@ const MenuItem = styled.div`
 export default function SideBar({ isOpen, closeCallback }) {
   const navigate = useNavigate();
 
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [blockScroll, allowScroll] = useScrollBlock();
-  useEffect(() => {
-    if (isOpen) {
-      blockScroll();
-      // const _prevScrollY = preventScroll();
-      // setPrevScrollY(_prevScrollY);
-    } else {
-      allowScroll();
-      // allowScroll(prevScrollY);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
-
   return (
     <>
       <ModalBackground
@@ -178,86 +161,90 @@ export default function SideBar({ isOpen, closeCallback }) {
           }
         }}
       />
-      <Container className={isOpen ? "open" : ""}>
-        <Top>
-          <CloseBtn
+      <RemoveScroll enabled={isOpen}>
+        <Container className={isOpen ? "open" : ""}>
+          <Top>
+            <CloseBtn
+              onClick={() => {
+                if (closeCallback) {
+                  closeCallback();
+                }
+              }}
+            >
+              <MdClose />
+              <div style={{ fontSize: "1rem", marginLeft: "0.25rem" }}>
+                닫기
+              </div>
+            </CloseBtn>
+          </Top>
+          <Header>
+            <strong>체계적으로 계획</strong>하고
+            <br />
+            <strong>집중해서 실천</strong>하고
+            <br />
+            <strong>논리적으로 뿌듯</strong>해서
+            <br />
+            <strong>행복해지세요</strong> 💖
+            <div
+              style={{
+                marginTop: "1rem",
+                fontSize: "1rem",
+                fontWeight: 500,
+                color: "var(--primaryL2)",
+              }}
+            >
+              GrowthTopia 드림
+            </div>
+          </Header>
+          <MenuHeader>일반</MenuHeader>
+          <MenuItem
             onClick={() => {
-              if (closeCallback) {
-                closeCallback();
-              }
+              navigate("/");
             }}
           >
-            <MdClose />
-            <div style={{ fontSize: "1rem", marginLeft: "0.25rem" }}>닫기</div>
-          </CloseBtn>
-        </Top>
-        <Header>
-          <strong>체계적으로 계획</strong>하고
-          <br />
-          <strong>집중해서 실천</strong>하고
-          <br />
-          <strong>논리적으로 뿌듯</strong>해서
-          <br />
-          <strong>행복해지세요</strong> 💖
-          <div
-            style={{
-              marginTop: "1rem",
-              fontSize: "1rem",
-              fontWeight: 500,
-              color: "var(--primaryL2)",
+            <MdHome style={{ marginRight: "0.5rem" }} />홈
+          </MenuItem>
+          <MenuSpacer />
+          <MenuHeader>워크스페이스</MenuHeader>
+          <MenuItem
+            onClick={() => {
+              navigate("/workspace/plan");
             }}
           >
-            GrowthTopia 드림
-          </div>
-        </Header>
-        <MenuHeader>일반</MenuHeader>
-        <MenuItem
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <MdHome style={{ marginRight: "0.5rem" }} />홈
-        </MenuItem>
-        <MenuSpacer />
-        <MenuHeader>워크스페이스</MenuHeader>
-        <MenuItem
-          onClick={() => {
-            navigate("/workspace/plan");
-          }}
-        >
-          <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            navigate("/workspace/plan");
-          }}
-        >
-          <MdAssignment style={{ marginRight: "0.5rem" }} />
-          계획과 스케줄
-        </MenuItem>
-        <MenuItem>
-          <MdCheck style={{ marginRight: "0.5rem" }} />
-          인박스에서 실천하기
-        </MenuItem>
-        <MenuItem>
-          <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
-          나는 노력하고 있을까
-        </MenuItem>
-        <MenuItem>
-          <MdWork style={{ marginRight: "0.5rem" }} />
-          워크스페이스
-        </MenuItem>
-        <MenuSpacer />
-        <MenuHeader>그로스토피아</MenuHeader>
-        <MenuItem>
-          <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
-          메타버스
-        </MenuItem>
-        <MenuItem>
-          <MdAccountBalance style={{ marginRight: "0.5rem" }} />
-          은행
-        </MenuItem>
-      </Container>
+            <MdFlag style={{ marginRight: "0.5rem" }} /> 비전과 목표
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              navigate("/workspace/plan");
+            }}
+          >
+            <MdAssignment style={{ marginRight: "0.5rem" }} />
+            계획과 스케줄
+          </MenuItem>
+          <MenuItem>
+            <MdCheck style={{ marginRight: "0.5rem" }} />
+            인박스에서 실천하기
+          </MenuItem>
+          <MenuItem>
+            <MdOutlineBarChart style={{ marginRight: "0.5rem" }} />
+            나는 노력하고 있을까
+          </MenuItem>
+          <MenuItem>
+            <MdWork style={{ marginRight: "0.5rem" }} />
+            워크스페이스
+          </MenuItem>
+          <MenuSpacer />
+          <MenuHeader>그로스토피아</MenuHeader>
+          <MenuItem>
+            <MdRocketLaunch style={{ marginRight: "0.5rem" }} />
+            메타버스
+          </MenuItem>
+          <MenuItem>
+            <MdAccountBalance style={{ marginRight: "0.5rem" }} />
+            은행
+          </MenuItem>
+        </Container>
+      </RemoveScroll>
     </>
   );
 }
