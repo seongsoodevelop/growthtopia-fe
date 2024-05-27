@@ -118,8 +118,6 @@ const Message = styled.div`
 
   background: var(--primaryD1);
   border-top: solid 0.1rem var(--primaryL1);
-
-  // margin-bottom: 0.5rem;
 `;
 
 const MenuSpacer = styled.div`
@@ -234,7 +232,7 @@ export default function SideBar({ isOpen, closeCallback }) {
             <MdAccountBalance style={{ marginRight: "0.5rem" }} />
             은행
           </MenuItem>
-          <div style={{ flexGrow: 1 }} />
+          <div style={{ flexGrow: 1, minHeight: "5rem" }} />
           <Message>
             <strong>체계적으로 계획</strong>하고
             <br />
