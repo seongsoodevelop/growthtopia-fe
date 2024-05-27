@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import WorkTaskSummary from "./WorkTaskSummary";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -154,7 +155,12 @@ export default function WorkCalendar() {
           오늘
         </Button>
         <Button
-          style={{ fontSize: "1rem", marginRight: "0.25rem" }}
+          style={{
+            fontSize: "1.5rem",
+            marginRight: "0.25rem",
+            display: "flex",
+            alignItems: "center",
+          }}
           onClick={() => {
             const t = moment(calendarTargetDate);
             t.subtract(1, isCalendarWeek ? "week" : "month");
@@ -166,10 +172,15 @@ export default function WorkCalendar() {
             );
           }}
         >
-          {"<"}
+          <MdChevronLeft />
         </Button>
         <Button
-          style={{ fontSize: "1rem", marginRight: "0.25rem" }}
+          style={{
+            fontSize: "1.5rem",
+            marginRight: "0.25rem",
+            display: "flex",
+            alignItems: "center",
+          }}
           onClick={() => {
             const t = moment(calendarTargetDate);
             t.add(1, isCalendarWeek ? "week" : "month");
@@ -181,7 +192,7 @@ export default function WorkCalendar() {
             );
           }}
         >
-          {">"}
+          <MdChevronRight />
         </Button>
         <Button
           style={{ fontSize: "1rem" }}
@@ -194,7 +205,7 @@ export default function WorkCalendar() {
             );
           }}
         >
-          {isCalendarWeek ? "주간" : "월간"}
+          {isCalendarWeek ? "월간" : "주간"}
         </Button>
       </Typo>
 
@@ -221,16 +232,17 @@ export default function WorkCalendar() {
                           );
                         }
                       }}
+                      style={{
+                        background:
+                          targetDate === day
+                            ? "var(--primary)"
+                            : day === moment().format("YYYY-MM-DD")
+                            ? `var(--gray2)`
+                            : "none",
+                      }}
                     >
                       <span
                         style={{
-                          padding: "0.25rem",
-                          border:
-                            day === moment().format("YYYY-MM-DD")
-                              ? `solid 0.15rem var(--primary)`
-                              : "none",
-                          background:
-                            targetDate === day ? "var(--primary)" : "none",
                           color:
                             targetDate === day
                               ? "white"

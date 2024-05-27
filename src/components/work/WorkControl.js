@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import WorkTaskDetail from "./WorkTaskDetail";
-import WorkTaskTimeline from "./WorkTaskTimeline";
 import WorkTaskList from "./WorkTaskList";
 import WorkTaskProgress from "./WorkTaskProgress";
 
@@ -14,24 +13,10 @@ const Wrapper = styled.div`
 `;
 
 export default function WorkControl() {
-  if (window.innerWidth < 1200) {
-    return (
-      <>
-        <WorkTaskProgress />
-        <WorkTaskTimeline />
-        <Wrapper>
-          <WorkTaskList />
-          <WorkTaskDetail />
-        </Wrapper>
-      </>
-    );
-  }
-
   return (
     <>
       <WorkTaskProgress />
       <Wrapper>
-        <WorkTaskTimeline />
         <WorkTaskList />
         <WorkTaskDetail />
       </Wrapper>

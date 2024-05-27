@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-
 import styled from "styled-components";
 import { shadowCSS } from "#lib/styleTools";
-import { allowScroll, preventScroll } from "#lib/scrollTools";
+import { RemoveScroll } from "react-remove-scroll";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -66,18 +64,6 @@ export default function Modal({
   style,
   styleBackground,
 }) {
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  useEffect(() => {
-    if (isOpen) {
-      const _prevScrollY = preventScroll();
-      setPrevScrollY(_prevScrollY);
-    } else {
-      allowScroll(prevScrollY);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
-
   return (
     <>
       <ModalBackground
@@ -89,9 +75,11 @@ export default function Modal({
         }}
         style={styleBackground || {}}
       />
-      <ModalWrapper className={isOpen ? "open" : ""} style={style || {}}>
-        {children}
-      </ModalWrapper>
+      <RemoveScroll enabled={isOpen}>
+        <ModalWrapper className={isOpen ? "open" : ""} style={style || {}}>
+          {children}
+        </ModalWrapper>
+      </RemoveScroll>
     </>
   );
 }

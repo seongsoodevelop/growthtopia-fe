@@ -17,7 +17,7 @@ import { formatDuration } from "#lib/momentTools";
 import { userSelector, userWorkEnd, userWorkStart } from "#redux/modules/user";
 
 const Wrapper = styled.div`
-  width: 33.33333%;
+  width: 50%;
 
   padding: 0.5rem;
 
@@ -29,10 +29,6 @@ const Wrapper = styled.div`
   align-items: flex-start;
 
   box-sizing: border-box;
-
-  @media only screen and (max-width: 1200px) {
-    width: 50%;
-  }
 `;
 
 export default function WorkTaskDetail() {

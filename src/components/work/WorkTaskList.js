@@ -12,7 +12,7 @@ import WorkTaskSummary from "./WorkTaskSummary";
 import { checkDateTimeIsInTargetDateDivision } from "#lib/momentTools";
 
 const Wrapper = styled.div`
-  width: 33.33333%;
+  width: 50%;
   height: 30rem;
   overflow-y: scroll;
 
@@ -21,10 +21,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  @media only screen and (max-width: 1200px) {
-    width: 50%;
-  }
 `;
 
 const InsertBtn = styled(Button)`
