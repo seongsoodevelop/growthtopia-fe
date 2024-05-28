@@ -136,7 +136,6 @@ export default function WorkCalendar() {
   return (
     <>
       <Typo as="h2" style={{ display: "flex" }}>
-        인박스{" "}
         {isCalendarWeek
           ? formatWeeksOfMonth(targetDate)
           : moment(calendarTargetDate).format("MM월")}

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import WorkTaskDetail from "./WorkTaskDetail";
 import WorkTaskList from "./WorkTaskList";
 import WorkTaskProgress from "./WorkTaskProgress";
+import WorkTaskTimeline from "./WorkTaskTimeline";
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -17,8 +17,8 @@ export default function WorkControl() {
     <>
       <WorkTaskProgress />
       <Wrapper>
+        <WorkTaskTimeline />
         <WorkTaskList />
-        <WorkTaskDetail />
       </Wrapper>
     </>
   );

@@ -1,5 +1,5 @@
 import { Footer, Header } from "#components/base";
-import { Container } from "#components/common";
+import { Container, Typo } from "#components/common";
 import { WorkCalendar, WorkControl } from "#components/work";
 import {
   workResetUpdateQueue,
@@ -34,6 +34,7 @@ export default function Plan() {
     <>
       <Header />
       <Container>
+        <Typo as="h2">계획과 스케줄</Typo>
         <WorkCalendar />
         <WorkControl />
       </Container>
